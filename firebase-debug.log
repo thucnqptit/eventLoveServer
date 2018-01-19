@@ -1,0 +1,80 @@
+[debug] [2018-01-19T17:32:28.013Z] ----------------------------------------------------------------------
+[debug] [2018-01-19T17:32:28.023Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Neo\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-01-19T17:32:28.024Z] CLI Version:   3.17.1
+[debug] [2018-01-19T17:32:28.024Z] Platform:      win32
+[debug] [2018-01-19T17:32:28.024Z] Node Version:  v7.4.0
+[debug] [2018-01-19T17:32:28.026Z] Time:          Sat Jan 20 2018 00:32:28 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:32:28.026Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-19T17:32:28.086Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-19T17:32:28.088Z] > authorizing via signed-in user
+[debug] [2018-01-19T17:32:28.098Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-19T17:32:28.100Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/2yJyK5ZExI7CiBiBIsp06U1Az4Hzk8uUdQtry6_62-0',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jan 20 2018 00:32:28 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:32:28.525Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-19T17:32:28.649Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/my-calender-188720  
+  
+ Sat Jan 20 2018 00:32:28 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:32:29.768Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-19T17:32:29.771Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/my-calender-188720/tokens  
+  
+ Sat Jan 20 2018 00:32:29 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:32:30.661Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'E:\eventwithlove'...
+[info] 
+[debug] [2018-01-19T17:32:30.668Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/my-calender-188720  
+  
+ Sat Jan 20 2018 00:32:30 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:32:31.919Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-19T17:32:31.920Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/879808903839/clients/_:getWebAppConfig  
+  
+ Sat Jan 20 2018 00:32:31 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:32:33.056Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-19T17:32:33.175Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (C:\Users\Neo\AppData\Roaming\npm\node_modules\firebase-tools\lib\serve\hosting.js:34:17)
+    at Object.onceWrapper (events.js:290:19)
+    at emitNone (events.js:86:13)
+    at Server.emit (events.js:185:7)
+    at emitListeningNT (net.js:1288:10)
+    at _combinedTickCallback (internal/process/next_tick.js:71:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:122:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-01-19T17:34:42.144Z] ----------------------------------------------------------------------
+[debug] [2018-01-19T17:34:42.152Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Neo\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-01-19T17:34:42.153Z] CLI Version:   3.17.1
+[debug] [2018-01-19T17:34:42.154Z] Platform:      win32
+[debug] [2018-01-19T17:34:42.154Z] Node Version:  v7.4.0
+[debug] [2018-01-19T17:34:42.155Z] Time:          Sat Jan 20 2018 00:34:42 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:34:42.155Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-19T17:34:42.200Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-19T17:34:42.202Z] > authorizing via signed-in user
+[debug] [2018-01-19T17:34:42.211Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/my-calender-188720  
+  
+ Sat Jan 20 2018 00:34:42 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:34:43.407Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-19T17:34:43.410Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/my-calender-188720/tokens  
+  
+ Sat Jan 20 2018 00:34:43 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:34:44.346Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'E:\eventwithlove'...
+[info] 
+[debug] [2018-01-19T17:34:44.354Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/my-calender-188720  
+  
+ Sat Jan 20 2018 00:34:44 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:34:45.648Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-19T17:34:45.649Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/879808903839/clients/_:getWebAppConfig  
+  
+ Sat Jan 20 2018 00:34:45 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-01-19T17:34:46.548Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: app
+[info] +  hosting: Local server: http://localhost:5000
+
