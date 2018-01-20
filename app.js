@@ -6,7 +6,6 @@ const path = require('path');
 const mongoose = require('mongoose');
 const config = require('./config.json');
 const api = require('./routers/api');
-// mongoose.Promise = require('bluebird');
 var configs = {
     apiKey: "AIzaSyDkup1NYJfVsM2vAX5hVPCOY561RrDjOLo",
     authDomain: "my-calender-188720.firebaseapp.com",
@@ -39,9 +38,6 @@ mongoose.connect(config.connectionString, (err) => {
 });
 
 const port = process.env.PORT || 1010;
-// const port = 1010;
 app.listen(port, (err) => {
   console.log(`App listen on ${port}`);
 });
-
-// mongodb://localhost/roomhunter

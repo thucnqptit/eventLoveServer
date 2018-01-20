@@ -1,32 +1,31 @@
 const mongoose = require('mongoose');
+const uuidV4 = require('uuid4');
+const ls = require('local-storage');
 const usersSchema = require('./usersSchema');
 
 let usersModel = mongoose.model('users', usersSchema);
 
 var login =  function (req, res) {
-        var fbid = req.body.fbid;
-        usersModel.findOne({fbid: fbid})
+        var username = req.body.username;
+        var password = req.body.password;
+        usersModel.findOne({username: username})
             .exec(function (err, user) {
                 if (err) {
                     res.json({code: 0, error: err});
                 }
-                else if (!user) {// tao moi
-                  var users = {
-                    name : name,
-                    fbid : fbid,
-                    email : email,
-                    avatar : avatar,
-                    phone : phone,
-                  }
-                    addUser()
+                else if (!user) {
                     res.json({code: 2, error: 'Sai tên đăng nhập'});
                 }
-                else {// da co tk
+                else if (!user.validPassword(password)) {
+                    res.json({code: 3, error: 'Sai mật khẩu'});
+                }
+                else {
                     res.json({
                         code: 1,
                         access_token: user.access_token,
                         user: user
                     });
+                    // ls.set('at', user.access_token)
                 }
             });
     }
@@ -45,9 +44,11 @@ var logout =  function (req, res) {
         });
 }
 
+
 var getUsersOnPage = function (req, res) {
         var page = req.query.page || 1;
         usersModel.find()
+            .populate('events')
             .sort({created_at: -1})
             .skip((page - 1) * 20)
             .limit(20)
@@ -64,6 +65,7 @@ var getUsersOnPage = function (req, res) {
 }
 var getUsers = function (req, res) {
         usersModel.findOne({id: req.query.id})
+            .populate('events')
             .exec(function (err, user) {
                 if (err) {
                     res.json({ code: 1, error: err });
@@ -88,15 +90,14 @@ var getNumberOfUsers = function (req, res) {
                 }
             });
     }
-var addUser = function(user, res) {
+var addUser = function(req, res) {
           var users = new usersModel({
-            name : user.name,
-            fbid : user.fbid,
-            email : user.email,
-            avatar : user.avatar,
-            phone : user.phone,
+            name : req.body.name,
+            password : req.body.password,
+            username : req.body.username,
+            access_token : uuidV4()
           });
-          users.save(function (err) {
+          Users.save(function (err) {
               if (err) res.json({code: 0, error: err});
               else {
                   res.json({code: 1, result: users});
@@ -104,21 +105,15 @@ var addUser = function(user, res) {
           });
       }
 var editUser = function (req, res) {
-  var usersId = req.query.pId;
+  var usersId = req.query.eOId;
        usersModel.findOne({_id: usersId}, function (err, user) {
            if (err) res.json({code: 0, error: err});
            else if (!user) res.json({code: 2, error: 'khong tim thay chu su kien'});
            else {
-             var fbid = req.query.des;
-             var avatar = req.query.end;
-             var email = req.query.start;
+             var password = req.query.password;
              var name = req.query.name;
-             var phone = req.query.phone;
-             if(fbid) users.fbid = fbid;
-             if(end) users.end = end;
-             if(start) users.start = start;
+             if(password) users.password = password;
              if(name) users.name = name;
-             if(phone) users.phone = phone;
                users.save(function (err) {
                    if (err) res.json({code: 0, error: err});
                    else{
@@ -136,13 +131,19 @@ const getUserById = (id, callback) => {
     } else{
       callback(null, doc);
     }
-  });
+  }).populate('events');
 };
+const updateProfile = (req, res) =>{
+
+}
 module.exports = {
   addUser,
   editUser,
   getUsersOnPage,
   getNumberOfUsers,
   getUserById,
-  getUsers
+  getUsers,
+  login,
+  logout,
+  updateProfile
 }
