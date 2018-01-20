@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const ls = require('local-storage');
 const eventsSchema = require('./eventsSchema');
-
+const usersSchema = require('../users/usersSchema');
 let eventsModel = mongoose.model('events', eventsSchema);
+let usersModel = mongoose.model('users', usersSchema);
 var getEventsOnPage = function (req, res) {
         var page = req.query.page || 1;
         eventsModel.find()
@@ -61,7 +62,10 @@ var addEvent = function(req, res) {
           events.save(function (err) {
               if (err) res.json({code: 0, error: err});
               else {
-                  res.json({code: 1, result: events});
+                // usersModel.addUser(req, res){
+                //
+                // }
+                res.json({code: 1, result: events});
               }
           });
       }
