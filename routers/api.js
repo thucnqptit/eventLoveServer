@@ -1,8 +1,10 @@
+var user = require('../controller/user');
 var express = require('express');
 var mongoose = require('mongoose');
 var eventOwnersSchema = require('../modules/eventOwners/eventOwnersSchema');
 var eventOwnersModel = mongoose.model('eventOwners', eventOwnersSchema);
 var eventOwners = require('../modules/eventOwners/eventOwnersModel');
+
 
 var router = express.Router();
 
@@ -31,10 +33,13 @@ function isVerifiedToken(req, res, next) {
 
 router.post('/login', eventOwners.login);
 router.get('/logout', isVerifiedToken, eventOwners.logout);
-router.get('/eventOwners',isVerifiedToken, eventOwners.getEventOwnersOnPage);
+router.get('/eventOwners', eventOwners.getEventOwnersOnPage);
 router.get('/eventOwners/:id',isVerifiedToken, eventOwners.getEventOwnerById);
 router.post('/eventOwners',isVerifiedToken,eventOwners.addEventOwner);
 router.put('/eventOwners', isVerifiedToken, eventOwners.editEventOwner);
 router.put('/me', isVerifiedToken, eventOwners.updateProfile);
+
+// -------------------------------- User --------------------------------------------------
+router.post('/u/user/', user.add);
 
 module.exports = router;
