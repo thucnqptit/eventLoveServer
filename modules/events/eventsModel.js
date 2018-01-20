@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const ls = require('local-storage');
 const eventsSchema = require('./eventsSchema');
-const usersSchema = require('../users/usersSchema');
 let eventsModel = mongoose.model('events', eventsSchema);
-let usersModel = mongoose.model('users', usersSchema);
 var getEventsOnPage = function (req, res) {
         var page = req.query.page || 1;
         eventsModel.find()

@@ -1,9 +1,6 @@
 var user = require('../controller/user');
 var express = require('express');
-var mongoose = require('mongoose');
-var usersSchema = require('../modules/users/usersSchema');
-var usersModel = mongoose.model('users', usersSchema);
-var users = require('../modules/users/usersModel');
+var usersModel = require('../models/user');
 var answers = require('../modules/answers/answersModel');
 var processes = require('../modules/processes/processesModel');
 var polls = require('../modules/polls/pollsModel');
@@ -35,13 +32,13 @@ function isVerifiedToken(req, res, next) {
   }
 }
 
-router.post('/login', users.login);
-router.get('/logout', isVerifiedToken, users.logout);
-router.get('/users',isVerifiedToken, users.getUsersOnPage);
-router.get('/users/:id',isVerifiedToken, users.getUserById);
-router.post('/users',users.addUser);
-router.put('/users', isVerifiedToken, users.editUser);
-router.put('/me', isVerifiedToken, users.updateProfile);
+router.post('/login', user.login);
+router.get('/logout', isVerifiedToken, user.logout);
+router.get('/users',isVerifiedToken, user.getUsersOnPage);
+router.get('/users/:id',isVerifiedToken, user.getUserById);
+router.post('/users',user.addUser);
+router.put('/users', isVerifiedToken, user.editUser);
+router.put('/me', isVerifiedToken, user.updateProfile);
 
 router.get('/answers',isVerifiedToken, answers.getAnswersOnPage);
 router.get('/answers/:id',isVerifiedToken, answers.getAnswerById);
@@ -63,10 +60,10 @@ router.get('/processes/:id',isVerifiedToken, processes.getProcessById);
 router.post('/processes',isVerifiedToken,processes.addProcess);
 router.put('/processes', isVerifiedToken, processes.editProcess);
 
-router.get('/users',isVerifiedToken, users.getUsersOnPage);
-router.get('/users/:id',isVerifiedToken, users.getUserById);
-router.post('/users',isVerifiedToken,users.addUser);
-router.put('/users', isVerifiedToken, users.editUser);
+router.get('/users',isVerifiedToken, user.getUsersOnPage);
+router.get('/users/:id',isVerifiedToken, user.getUserById);
+router.post('/users',isVerifiedToken,user.addUser);
+router.put('/users', isVerifiedToken, user.editUser);
 
 // -------------------------------- User --------------------------------------------------
 router.post('/u/user/', user.add);
